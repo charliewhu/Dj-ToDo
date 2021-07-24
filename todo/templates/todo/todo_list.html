@@ -1,27 +1,26 @@
 {% extends 'todo/base.html' %} {% load static %}
 {% block content %}
 
+<h1>Hi {{user.username}}, this is your To-Do List</h1>
+
+<a href="{% url 'todo_create' %}">Add a new item</a>
 
 <table>
   <tr>
     <th>Task</th>
+    <th></th>
   </tr>
   {% for todo in todos %}
-  <tr>
-    <td>{{ todo.title }}</td>
-    <td> <a href="{% url 'todo_detail' todo.id %}">  View Item </a></td>
-  </tr>
+    <tr>
+      <td>{{ todo.title }}</td>
+      <td> <a href="{% url 'todo_detail' todo.id %}">  View Item </a></td>
+    </tr>
+  {% empty %}
+    <h4>No items in your To-Do List</h4>
   {% endfor %}
 </table>
 
-<ul>
-  {% for todo in todos %}
-    <li>
-      <a href="{{ todo.id }}">{{ todo.title }}:</a> {{ todo.text }} 
-    </li>
-  {% endfor %}
-</ul>
 
-<a href="{% url 'todo_add' %}">Add a new item</a>
+
 
 {% endblock content %}
