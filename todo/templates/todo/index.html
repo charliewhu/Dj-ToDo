@@ -1,0 +1,17 @@
+{% extends 'todo/base.html' %} {% load static %}
+{% block content %}
+
+<ul>
+  {% for todo in todos %}
+    <li>
+      <a href="{{todo.id}}"> 
+        {{ todo.title }}:
+      </a> 
+      {{ todo.text }} 
+    </li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'todo_add' %}">Add a new item</a>
+
+{% endblock content %}
