@@ -1,0 +1,16 @@
+{% extends 'todo/base.html' %} {% load static %}
+{% block content %}
+
+<a href="{% url 'todo' %}">Go Back</a>
+
+<form method="POST">
+{% csrf_token %}
+
+  <p>Do you really want to delete this item?</p>
+  <p>{{ todo.title }}</p>
+  <input type="submit" value="Delete">
+
+</form>
+
+
+{% endblock content %}

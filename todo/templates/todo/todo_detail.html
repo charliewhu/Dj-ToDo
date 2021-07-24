@@ -5,5 +5,6 @@
   <h1> {{ todo.title }} </h1>
   <p> {{ todo.text }} </p>
   <footer> {{ todo.created_on }} </footer>
+  <a href="{% url 'todo_delete' todo.id %}">Delete Item</a>
 
 {% endblock content %}

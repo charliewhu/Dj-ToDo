@@ -14,6 +14,8 @@
     <tr>
       <td>{{ todo.title }}</td>
       <td> <a href="{% url 'todo_detail' todo.id %}">  View Item </a></td>
+      <td> <a href="{% url 'todo_update' todo.id %}">  Update Item </a></td>
+      <td> <a href="{% url 'todo_delete' todo.id %}">  Delete Item </a></td>
     </tr>
   {% empty %}
     <h4>No items in your To-Do List</h4>
