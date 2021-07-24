@@ -8,6 +8,7 @@ urlpatterns = [
     #auth views
     path('login/', views.Login.as_view(), name = 'login'),
     path('logout/', LogoutView.as_view(next_page='login'), name = 'logout'),
+    path('register/', views.Register.as_view(), name = 'register'),
 
     #crud views
     path('<int:pk>/', views.TodoDetail.as_view(), name= 'todo_detail'),
