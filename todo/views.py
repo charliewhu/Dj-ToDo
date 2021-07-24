@@ -1,24 +1,21 @@
 from typing import ContextManager
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from .models import Todo
 
-# Create your views here.
-
-def todo(request):
-    todos = Todo.objects.all()
-    context = {
-        'todos':todos,
-    }
-    return render(request, 'todo/index.html', context)
 
 
-def todo_detail(request, pk):
-    todo = Todo.objects.get(id=pk)
-    context = {
-        'todo':todo,
-    }
-    return render(request, 'todo/detail.html', context)
+class TodoList(ListView):
+    model = Todo
+    context_object_name = 'todos'
+
+
+class TodoDetail(DetailView):
+    model = Todo
+    context_object_name = 'todo'
+
 
 def todo_add(request):
     if(request.method == 'POST'):
@@ -31,3 +28,5 @@ def todo_add(request):
         return redirect('/')
     else:
         return render(request, 'todo/add.html')
+
+

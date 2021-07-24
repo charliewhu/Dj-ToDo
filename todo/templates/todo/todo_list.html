@@ -4,10 +4,7 @@
 <ul>
   {% for todo in todos %}
     <li>
-      <a href="{{todo.id}}"> 
-        {{ todo.title }}:
-      </a> 
-      {{ todo.text }} 
+      <a href="{{todo.id}}">{{ todo.title }}:</a> {{ todo.text }} 
     </li>
   {% endfor %}
 </ul>
