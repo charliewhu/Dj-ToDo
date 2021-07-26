@@ -1,16 +1,19 @@
 {% extends 'todo/base.html' %} {% load static %}
 {% block content %}
 
-<a href="{% url 'todo' %}">Go Back</a>
 
-<form method="POST">
-{% csrf_token %}
+<div class="text-center pt-3 mb-5">
+  <form method="POST">
+  {% csrf_token %}
+    <p>Do you really want to delete this item?</p>
+    <p><strong>{{ todo.title }}</strong></p>
+    <input type="submit" value="Delete" class="btn btn-danger">
+  </form>
+</div>
 
-  <p>Do you really want to delete this item?</p>
-  <p>{{ todo.title }}</p>
-  <input type="submit" value="Delete">
-
-</form>
+<div class="text-center pb-3">
+  <a href="{% url 'todo' %}" class="btn btn-outline-warning"> Go Back</a>
+</div>
 
 
 {% endblock content %}
