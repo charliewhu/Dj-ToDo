@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'todo/style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'todo/style.css' %}">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
-    <title>Todo List App</title>
-  </head>
+  <title>To-Do App</title>
+</head>
 
-  <body>
+<body class="bg-dark">
+  
+  <div class="container bg-secondary bg-gradient rounded-top" style="max-width:600px">
 
-    <div class="container">
-      <div class="header">
-        
-        <a href="{% url 'todo' %}"><h1>To-Do App</h1></a>
-        
-        <hr>
-      
-        {% if request.user.is_authenticated %}
-          {{ request.user|title }} 
-          <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-          <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-
-      </div>
-      
-
-    
-
-      {% block content %}
-      {% endblock content %}
-
+    <div class="text-center my-3 pt-3">
+      <a href="{% url 'todo' %}" class="h1 text-center">
+        To-Do App
+      </a>      
     </div>
 
-  </body>
+    <div class="text-center pb-3">
+      {% if request.user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <div class="container bg-light bg-gradient" style="max-width:600px">
+    {% block content %}
+    {% endblock content %}
+  </div>
+  
+
+
+  <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
 </html>

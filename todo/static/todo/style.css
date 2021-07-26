@@ -1,37 +1,26 @@
 body {
     font-family: 'Montserrat', sans-serif;
     padding-top: 50px;
-    background-color: wheat;
+    background-color: white;
 }
 
 a:link {
     color: inherit;
-    
+    text-decoration: none;
 }
 
 a:visited {
     color: inherit;
-    
 }
 
 a:hover {
-    color: blue;
+    color: green;
 }
 
-.container {
-    max-width: 500px;
-    margin: auto;
-    background-color: white;
-    box-shadow: 3px 3px 10px -5px;
-    border-radius: 10px 10px 10px 10px;
-    text-decoration: none;
+#delete-item:hover {
+    color: red;
 }
 
-
-
-.todo-item-complete {
-    font-style: italic;
-    text-decoration: line-through;
+#update-item:hover {
+    color: orange;
 }
-
-

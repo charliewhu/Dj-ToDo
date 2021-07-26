@@ -7,46 +7,49 @@
 
 
 
-<h4>{{user.username|title}}, you have {{count}} incomplete item{{count|pluralize}}</h4>
+<h4 class="text-center py-5">
+  {{user.username|title}}, you have {{count}} incomplete item{{count|pluralize}}
+</h4>
 
-<form method="GET">
-  <input type="text" name="todo-search" value='{{search}}'>
-  <input type="submit" value="Search">
-</form>
+<div class="text-center container pb-5">
+  <form method="GET">
+    <input type="text" name="todo-search" value='{{search}}'>
+    <input type="submit" value="Search" >
+  </form>
+</div>
 
 
-<a href="{% url 'todo_create' %}">Add a new item</a>
+<div class="text-center container pb-5">
+  <a href="{% url 'todo_create' %}" class="btn btn-outline-success">Add a new item</a>
+</div>
 
 
+<div class="container mb-3 bg-light">
   {% for todo in todos %}
-
-    <div class="todo-list">  
-      {% if todo.complete == True %} 
-
-        <div class="todo-item-complete">
+    <div class="row border-top border-secondary py-3">
+      <div class="col-9">
+        {% if todo.complete == True %} 
+          <a href="{% url 'todo_detail' todo.id %}" class="text-decoration-line-through fst-italic">  
+            {{ todo.title }} 
+          </a>
+        {% else %}
           <a href="{% url 'todo_detail' todo.id %}">  {{ todo.title }} </a>
-          <a href="{% url 'todo_update' todo.id %}">  Update </a>
-          <a href="{% url 'todo_delete' todo.id %}">  Delete </a>
-          {{ todo.complete }}
-        </div>
-      
-      {% else %}
-
-      <div class="todo-item">
-        <a href="{% url 'todo_detail' todo.id %}">  {{ todo.title }} </a>
-        <a href="{% url 'todo_update' todo.id %}">  Update </a>
-        <a href="{% url 'todo_delete' todo.id %}">  Delete </a>
-        {{ todo.complete }}
+        {% endif %}
       </div>
 
-      {% endif %}
+      <div class="col-2">
+        <a href="{% url 'todo_update' todo.id %}" id="update-item">  Update </a>
+      </div>
+      <div class="col-1">
+        <a href="{% url 'todo_delete' todo.id %}" id="delete-item"> 
+          <i class="bi bi-x"></i>
+        </a>
+      </div>
     </div>
-
   {% empty %}
     <h4>No items in your To-Do List</h4>
   {% endfor %}
-
-
+</div>
 
 
 
