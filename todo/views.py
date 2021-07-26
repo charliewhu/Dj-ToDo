@@ -36,7 +36,7 @@ class Register(FormView):
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('todo')
-        return super(Register, self).get()
+        return super(Register, self).get(*args, **kwargs)
 
 
 class TodoList(LoginRequiredMixin, ListView):

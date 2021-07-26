@@ -7,11 +7,11 @@
 
 
 
-<h4 class="text-center py-5">
+<h4 class="text-center py-4">
   {{user.username|title}}, you have {{count}} incomplete item{{count|pluralize}}
 </h4>
 
-<div class="text-center container pb-5">
+<div class="text-center container pb-4">
   <form method="GET">
     <input type="text" name="todo-search" value='{{search}}'>
     <input type="submit" value="Search" >
@@ -19,7 +19,7 @@
 </div>
 
 
-<div class="text-center container pb-5">
+<div class="text-center container pb-4">
   <a href="{% url 'todo_create' %}" class="btn btn-outline-success">Add a new item</a>
 </div>
 

@@ -1,15 +1,17 @@
 {% extends 'todo/base.html' %} {% load static %}
 {% block content %}
 
-<a href="/">Go Back</a>
 
-<form method="POST">
-{% csrf_token %}
+<div class="container text-center py-3">
+  <form method="POST">
+  {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit" class="btn btn-outline-success">
+  </form>
+</div>
 
-  {{ form.as_p }}
-  <input type="submit" value="submit">
-
-</form>
-
+<div class="text-center pb-3">
+  <a href="{% url 'todo' %}" class="btn btn-outline-warning"> Go Back</a>
+</div>
 
 {% endblock content %}

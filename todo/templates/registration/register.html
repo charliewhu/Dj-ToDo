@@ -1,14 +1,22 @@
 {% extends 'todo/base.html' %} {% load static %} {% block content %}
 
-<form method="POST">
-  {% csrf_token %} 
-  {{ form.as_p }}
-  <input type="submit" value="Register" />
-</form>
 
-<p>
-  Already have an account?
-  <a href="{% url 'login' %}">Login</a>
-</p>
+<div class="container py-3">
+  <form method="POST">
+    {% csrf_token %} 
+    {{ form.as_p }}
+    <input type="submit" value="Register"/>
+  </form>
+</div>
+
+<div class="container text-center py-3">
+  <p class="pt-3 text-center">
+    Already have an account?
+  </p>
+  <a href="{% url 'login' %}" class="btn btn-outline-primary">
+    Login
+  </a>
+</div>
+
 
 {% endblock content %}
