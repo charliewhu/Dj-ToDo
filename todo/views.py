@@ -44,9 +44,16 @@ class TodoList(LoginRequiredMixin, ListView):
     context_object_name = 'todos'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['todos'] = context['todos'].filter(user=self.request.user)
-        context['count'] = context['todos'].filter(complete=False).count()
+        context             = super().get_context_data(**kwargs)
+        context['todos']    = context['todos'].filter(user=self.request.user)
+        context['count']    = context['todos'].filter(complete=False).count()
+        search              = self.request.GET.get('todo-search') or ''
+
+        if search:
+            context['todos']= context['todos'].filter(
+                title__startswith = search
+            )
+        context['search'] = search
         return context
 
 

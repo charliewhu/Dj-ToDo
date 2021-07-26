@@ -1,0 +1,37 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 50px;
+    background-color: wheat;
+}
+
+a:link {
+    color: inherit;
+    
+}
+
+a:visited {
+    color: inherit;
+    
+}
+
+a:hover {
+    color: blue;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background-color: white;
+    box-shadow: 3px 3px 10px -5px;
+    border-radius: 10px 10px 10px 10px;
+    text-decoration: none;
+}
+
+
+
+.todo-item-complete {
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+

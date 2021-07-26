@@ -1,26 +1,51 @@
-{% extends 'todo/base.html' %} {% load static %}
+
+{% extends 'todo/base.html' %} 
+{% load static %}
+
 {% block content %}
 
-<h2>Hi {{user.username}}, this is your To-Do List</h2>
+
+
+
+<h4>{{user.username|title}}, you have {{count}} incomplete item{{count|pluralize}}</h4>
+
+<form method="GET">
+  <input type="text" name="todo-search" value='{{search}}'>
+  <input type="submit" value="Search">
+</form>
+
 
 <a href="{% url 'todo_create' %}">Add a new item</a>
 
-<table>
-  <tr>
-    <th>Task</th>
-    <th></th>
-  </tr>
+
   {% for todo in todos %}
-    <tr>
-      <td>{{ todo.title }}</td>
-      <td> <a href="{% url 'todo_detail' todo.id %}">  View Item </a></td>
-      <td> <a href="{% url 'todo_update' todo.id %}">  Update Item </a></td>
-      <td> <a href="{% url 'todo_delete' todo.id %}">  Delete Item </a></td>
-    </tr>
+
+    <div class="todo-list">  
+      {% if todo.complete == True %} 
+
+        <div class="todo-item-complete">
+          <a href="{% url 'todo_detail' todo.id %}">  {{ todo.title }} </a>
+          <a href="{% url 'todo_update' todo.id %}">  Update </a>
+          <a href="{% url 'todo_delete' todo.id %}">  Delete </a>
+          {{ todo.complete }}
+        </div>
+      
+      {% else %}
+
+      <div class="todo-item">
+        <a href="{% url 'todo_detail' todo.id %}">  {{ todo.title }} </a>
+        <a href="{% url 'todo_update' todo.id %}">  Update </a>
+        <a href="{% url 'todo_delete' todo.id %}">  Delete </a>
+        {{ todo.complete }}
+      </div>
+
+      {% endif %}
+    </div>
+
   {% empty %}
     <h4>No items in your To-Do List</h4>
   {% endfor %}
-</table>
+
 
 
 
